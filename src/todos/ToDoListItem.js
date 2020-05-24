@@ -8,11 +8,10 @@ const ToDoListItem = ({todo, onRemove, onMarkCompleted}) => {
                 ? null
                 : <button 
                     className="todo-list-btn-completed" 
-                    onClick={() => onMarkCompleted(todo.text)}>Mark as completed
+                    onClick={() => onMarkCompleted(todo)}>Mark as completed
                 </button>
             }
-            
-            <button className="todo-list-btn-remove" onClick={() => onRemove(todo.text)}>Remove</button>
+            <button className="todo-list-btn-remove" onClick={() => onRemove(todo.id)}>Remove</button>
         </div>
     );
 }
