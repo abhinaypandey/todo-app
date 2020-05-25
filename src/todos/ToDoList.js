@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import ToDoListItem from './ToDoListItem';
-import ToDoForm from './ToDoForm';
+import LinearProgressBar from './LinearProgressBar';
+
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { fetchTodos, updateTodos, deleteTodo } from './thunk';
 
 const ToDoList = ({todos = [], onRemove, onMarkCompleted, isLoading, onStartLoadingTodos}) => {
@@ -10,15 +12,15 @@ const ToDoList = ({todos = [], onRemove, onMarkCompleted, isLoading, onStartLoad
         onStartLoadingTodos();
     },[]);
 
-    const loadingMsg = <div>....Loading</div>;
+    const loadingMsg = <LinearProgress color="secondary" />
     const content = (
         <div className="todo-list">
-            <ToDoForm/>
             {todos.length > 0 && todos.map( (todo,i) => <ToDoListItem 
                 key={i} 
                 todo={todo} 
                 onRemove={onRemove} 
-                onMarkCompleted={onMarkCompleted}/>)}
+                onMarkCompleted={onMarkCompleted}
+                loading={isLoading}/>)}
         </div>
     );
 
